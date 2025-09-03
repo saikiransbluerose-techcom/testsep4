@@ -1,0 +1,31 @@
+{
+  "name": "playwright-automation-project",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:codegen": "playwright codegen",
+    "install:browsers": "echo 'Browser installation skipped in WebContainer'",
+    "test:api": "playwright test tests/api/",
+    "test:e2e": "playwright test tests/e2e/",
+    "test:visual": "playwright test tests/visual/",
+    "test:performance": "playwright test tests/performance/",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "echo 'Firefox tests disabled in WebContainer'",
+    "test:safari": "echo 'Safari tests disabled in WebContainer'",
+    "test:mobile": "echo 'Mobile tests disabled in WebContainer'",
+    "test:parallel": "playwright test --workers=4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "dotenv": "^17.2.1",
+    "playwright": "^1.41.0"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}

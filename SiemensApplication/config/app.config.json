@@ -1,0 +1,21 @@
+{
+  "excel": {
+    "path": "../test-data/playwright-data-driven-template.xlsx",
+    "sheets": {
+      "startWorkflow": "StartWorkflow",
+      "assignees": "Assignees",
+      "approvals": "Approvals"
+    },
+    "assigneesColumns": {
+      "id": "searchText",
+      "name": "displayText",
+      "email": "emailIfAny",
+      "password": "password"
+    }
+  },
+  "urls": {
+    "loginStart": "https://siemens-dev1.pegacloud.com/prweb/PRAuth/app/GWSS/WufOMs17lxZjy1fI-RH7kXW6DtwPXjuN*/!STANDARD?pzuiactionrrr=CXtpbn1yblhJcEYzRHZaSUFPUGUvcE5ZV2xqTS9rSHJKSTQreE9CL1Zaa3FPZDI2MFZ6dUY2MzVJek5OdklKYWZ4S3hXc082OHRHVVg3VGZmRE8rYnkxM2xvZz09*",
+    "portalRoot": "https://siemens-dev1.pegacloud.com/prweb/",
+    "portalDefault": "https://siemens-dev1.pegacloud.com/prweb/app/default/WufOMs17lxZjy1fI-RH7kXW6DtwPXjuN*/!STANDARD"
+  }
+}

@@ -1,0 +1,7 @@
+import { authenticator } from 'otplib';
+
+export function generateTotp(secret = process.env.TOTP_SECRET) {
+  if (!secret) throw new Error('TOTP secret missing. Set TOTP_SECRET env var.');
+  authenticator.options = { step: 30, digits: 6, window: 1, algorithm: 'sha1' };
+  return authenticator.generate(secret);
+}
