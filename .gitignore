@@ -6,3 +6,5 @@ blob-report/
 .idea/
 .DS_Store
 Thumbs.db
+# ignore environment secrets
+.env
