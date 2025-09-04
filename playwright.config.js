@@ -8,7 +8,11 @@ export default defineConfig({
   timeout: 120_000,
   expect: { timeout: 5_000 },
   retries: 0,
-  reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'always' }]],
+  reporter: [
+    ['list'],
+    ['html', { outputFolder: 'playwright-report', open: 'never' }], // 'never' for CI
+    ['junit', { outputFile: 'test-results/results.xml' }]
+  ],
   use: {
     headless: false,
     launchOptions: {
@@ -30,12 +34,53 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
   projects: [
-    { name: 'IntelligentHealthCare - Chromium', testDir: './IntelligentHealthCare/tests', use: { browserName: 'chromium' }, outputDir: 'test-results/IntelligentHealthCare/chromium' },
-    { name: 'IntelligentHealthCare - Firefox',  testDir: './IntelligentHealthCare/tests', use: { browserName: 'firefox'  }, outputDir: 'test-results/IntelligentHealthCare/firefox'  },
-    { name: 'IntelligentHealthCare - WebKit',   testDir: './IntelligentHealthCare/tests', use: { browserName: 'webkit'   }, outputDir: 'test-results/IntelligentHealthCare/webkit'   },
-    { name: 'LoanManagement - Chromium',        testDir: './LoanManagement/tests',        use: { browserName: 'chromium' }, outputDir: 'test-results/LoanManagement/chromium' },
-    { name: 'LoanManagement - Firefox',         testDir: './LoanManagement/tests',        use: { browserName: 'firefox'  }, outputDir: 'test-results/LoanManagement/firefox'  },
-    { name: 'LoanManagement - WebKit',          testDir: './LoanManagement/tests',        use: { browserName: 'webkit'   }, outputDir: 'test-results/LoanManagement/webkit'   },
-    { name: 'SiemensApplication - edge',        testDir: './SiemensApplication/tests',    use: { browserName: 'chromium' }, outputDir: 'test-results/SiemensApplication/edge' },
+    { 
+      name: 'IntelligentHealthCare - Chromium',
+      testDir: './IntelligentHealthCare/tests',
+      use: { browserName: 'chromium' },
+      outputDir: 'test-results/IntelligentHealthCare/chromium'
+    },
+    { 
+      name: 'IntelligentHealthCare - Firefox',
+      testDir: './IntelligentHealthCare/tests',
+      use: { browserName: 'firefox' },
+      outputDir: 'test-results/IntelligentHealthCare/firefox'
+    },
+    { 
+      name: 'IntelligentHealthCare - WebKit',
+      testDir: './IntelligentHealthCare/tests',
+      use: { browserName: 'webkit' },
+      outputDir: 'test-results/IntelligentHealthCare/webkit'
+    },
+    { 
+      name: 'LoanManagement - Chromium',
+      testDir: './LoanManagement/tests',
+      use: { browserName: 'chromium' },
+      outputDir: 'test-results/LoanManagement/chromium'
+    },
+    { 
+      name: 'LoanManagement - Firefox',
+      testDir: './LoanManagement/tests',
+      use: { browserName: 'firefox' },
+      outputDir: 'test-results/LoanManagement/firefox'
+    },
+    { 
+      name: 'LoanManagement - WebKit',
+      testDir: './LoanManagement/tests',
+      use: { browserName: 'webkit' },
+      outputDir: 'test-results/LoanManagement/webkit'
+    },
+    { 
+      name: 'SiemensApplication - Chromium',
+      testDir: './SiemensApplication/tests',
+      use: { browserName: 'chromium' },   // Linux-friendly
+      outputDir: 'test-results/SiemensApplication/chromium'
+    },
+    { 
+      name: 'SiemensApplication - edge',
+      testDir: './SiemensApplication/tests',
+      use: { browserName: 'chromium', channel: 'msedge' }, // works on Windows agents
+      outputDir: 'test-results/SiemensApplication/edge'
+    },
   ],
 });
