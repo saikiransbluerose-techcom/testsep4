@@ -153,6 +153,7 @@ const APPROVALS = getSheetRows(EXCEL_PATH, SHEET_APPROVALS);
   await u0.gadget1.getByRole('textbox', { name: 'Quantity' }).fill(getSW('quantity'));
   await u0.gadget1.getByRole('textbox', { name: 'Quantity' }).press('Tab');
 
+
   await u0.gadget1.getByTestId('20200701144756084279306-DatePicker').click();
   await u0.gadget1.getByRole('button', { name: toCalendarBtnLabel(getSW('dateISO')) }).click();
 
@@ -201,6 +202,7 @@ const APPROVALS = getSheetRows(EXCEL_PATH, SHEET_APPROVALS);
 
   //new code
   await u0.gadget1.getByTestId('20150908171228012736690').click();
+  
   await u0.gadget1.getByRole('link', { name: 'Add user', exact: true }).click();
   await u0.gadget1.getByRole('textbox', { name: 'Lastname, Firstname,' }).fill(getAssigneeId(3));
   await u0.gadget1.getByText(getAssigneeName(3)).click();
@@ -228,7 +230,9 @@ const APPROVALS = getSheetRows(EXCEL_PATH, SHEET_APPROVALS);
   await page.getByRole('button', { name: 'Log in' }).click();
 
   const u1 = await getGadgets(page);
+  await page.waitForTimeout(500);
   await u1.gadget0.getByTestId('20141008144226093346187').getByRole('link', { name: 'Click to filter' }).click();
+  await page.waitForTimeout(800);
   await u1.gadget0.getByTestId('201411181100280377101613').fill(caseId);
   await u1.gadget0.getByTestId('filterPopupOkButton').click();
   await u1.gadget0.getByTestId('20141008144226093953391').click();
@@ -264,7 +268,9 @@ const APPROVALS = getSheetRows(EXCEL_PATH, SHEET_APPROVALS);
   await page.getByRole('button', { name: 'Log in' }).click();
 
   const u2 = await getGadgets(page);
+   await page.waitForTimeout(500);
   await u2.gadget0.getByTestId('20141008144226093346187').getByRole('link', { name: 'Click to filter' }).click();
+  await page.waitForTimeout(800);
   await u2.gadget0.getByTestId('201411181100280377101613').fill(caseId);
   await u2.gadget0.getByTestId('filterPopupOkButton').click();
   await u2.gadget0.getByTestId('20141008144226093953391').click();
@@ -294,10 +300,13 @@ const APPROVALS = getSheetRows(EXCEL_PATH, SHEET_APPROVALS);
   await page.getByRole('textbox', { name: 'Password *' }).fill(APPROVER_DEFAULT_PASS);
   await page.getByRole('button', { name: 'Log in' }).click();
 
-  await page.pause();
+  //await page.pause();
 
   const u3 = await getGadgets(page);
+   await page.waitForTimeout(500);
   await u3.gadget0.getByTestId('20141008144226093346187').getByRole('link', { name: 'Click to filter' }).click();
+  await page.waitForTimeout(800);
+
   await u3.gadget0.getByTestId('201411181100280377101613').fill(caseId);
   await u3.gadget0.getByTestId('filterPopupOkButton').click();
   await u3.gadget0.getByTestId('20141008144226093953391').click();
